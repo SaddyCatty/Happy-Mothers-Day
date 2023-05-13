@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>母亲节快乐</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      body {
+        background-image: url("https://images.pexels.com/photos/2072170/pexels-photo-2072170.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
+        background-size: cover;
+        background-position: center;
+        font-family: "Microsoft YaHei", STXihei, Helvetica, Arial, sans-serif; /* 字体选择 */
+        text-align: center;
+        color: #292929;
+      }
+
+      h1 {
+        font-size: 50px;
+        margin-top: 150px;
+        color: #e60073;
+      }
+
+      p {
+        font-size: 30px;
+        margin-top: 40px;
+        color: #f08080;
+      }
+
+      img {
+        width: 400px;
+        border-radius: 50%;
+        box-shadow: 5px 5px 10px grey;
+        display: block;
+        margin: 0 auto;
+      }
+
+      /* 适配手机端屏幕 */
+      @media only screen and (max-width: 600px) {
+        h1 {
+          font-size: 30px;
+          margin-top: 80px;
+        }
+        p {
+          font-size: 18px;
+          margin-top: 20px;
+          margin-bottom: 20px;
+        }
+        img {
+          width: 300px;
+          border-radius: 40%;
+        }
+      }
+
+      /* 显示距离母亲节的时间 */
+      #countdown {
+        margin-top: 50px;
+        font-size: 24px;
+        color: #f08080;
+      }
+
+      /* 控制音乐播放的按钮 */
+      button {
+        margin-top: 20px;
+        font-size: 16px;
+        color: white;
+        background-color: #e60073;
+        border: none;
+        border-radius: 5px;
+        padding: 8px 16px;
+        cursor: pointer;
+        transition: background-color 0.3s ease-in-out;
+      }
+
+      button:hover {
+        background-color: #f08088;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h1>母亲节快乐!</h1>
+    <p><strong>亲爱的妈妈，感谢您一直以来的辛勤付出和关爱照顾。</strong></p>
+    <p>
+      <strong
+        >为了感谢您的养育之恩，我送上这个小小的祝福网页，献上我最真挚的心意！</strong
+      >
+    </p>
+    <img
+      src="https://images.pexels.com/photos/931177/pexels-photo-931177.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=600"
+      alt="花束"
+    />
+    <iframe
+      frameborder="no"
+      border="0"
+      marginwidth="0"
+      marginheight="0"
+      width="330"
+      height="86"
+      src="//music.163.com/outchain/player?type=2&id=2046984505&auto=1&height=66"
+    ></iframe>
+    <div id="countdown"></div>
+
+    <script>
+      // 更新时间并显示倒计时
+      function updateTime() {
+        // 获取当前时间对象
+        const now = new Date();
+
+        // 获取明天凌晨的时间对象，即母亲节当天 00:00
+        const tomorrow = new Date(
+          now.getFullYear(),
+          now.getMonth(),
+          now.getDate() + 1
+        );
+
+        // 计算距离母亲节当天 00:00 还有多长时间，输出显示在页面底部
+        const countdown = document.getElementById("countdown");
+        const timeLeft = (tomorrow.getTime() - now.getTime()) / 1000; // 转换为秒
+        const hours = Math.floor(timeLeft / 3600);
+        const minutes = Math.floor((timeLeft % 3600) / 60);
+        const seconds = Math.floor(timeLeft % 60);
+        countdown.textContent = `距离母亲节的到来还有 ${hours} 小时：${minutes} 分钟：${seconds} 秒`;
+      }
+
+      // 控制音乐播放和暂停
+      function toggleMusic() {
+        const music = document.getElementById("music");
+        if (music.paused) {
+          music.play();
+        } else {
+          music.pause();
+        }
+      }
+
+      // 每隔一秒更新一次时间
+      setInterval(updateTime, 1000);
+    </script>
+  </body>
+</html>
